@@ -63,19 +63,21 @@ A comprehensive web application for small to mid-sized businesses to automatical
 - **Lucide React** for icons
 
 ### Backend
-- **Node.js** with Express
-- **TypeScript** for type safety
-- **Better-SQLite3** for database
+- **Python 3.9+** with FastAPI
+- **SQLAlchemy** for database ORM
+- **SQLite** for database storage
 - **Anthropic API** (Claude) for AI analysis
-- **JWT** for authentication
-- **Multer** for file uploads
-- **PDF-Parse** for PDF extraction
-- **Mammoth** for Word document parsing
+- **JWT** (python-jose) for authentication
+- **PyPDF2** for PDF extraction
+- **python-docx** for Word document parsing
+- **Pydantic** for data validation
 
 ## Installation
 
 ### Prerequisites
-- Node.js 18+ and npm
+- Python 3.9 or higher
+- pip (Python package manager)
+- Node.js 18+ and npm (for frontend only)
 - Anthropic API key
 
 ### Setup
@@ -87,6 +89,17 @@ cd hr-ops-compliance-agent
 ```
 
 2. **Install dependencies**
+```bash
+# Install frontend dependencies
+cd frontend
+npm install
+
+# Install backend dependencies
+cd ../backend
+pip install -r requirements.txt
+```
+
+Or use the convenient script:
 ```bash
 npm run install:all
 ```
@@ -101,9 +114,10 @@ cp backend/.env.example backend/.env
 Edit `backend/.env` and add your configuration:
 ```
 PORT=5000
-NODE_ENV=development
+ENV=development
 JWT_SECRET=your-secure-secret-key-change-in-production
 ANTHROPIC_API_KEY=your-anthropic-api-key
+DATABASE_URL=sqlite:///./data/compliance.db
 ```
 
 To get an Anthropic API key:
