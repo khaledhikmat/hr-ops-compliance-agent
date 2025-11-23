@@ -124,7 +124,7 @@ async def generate_report(
         "categoryGroups": category_groups
     }
 
-@router.get("/", response_model=list[ReportSchema])
+@router.get("", response_model=list[ReportSchema])
 async def get_reports(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)

@@ -128,7 +128,7 @@ async def upload_document(
         "message": "Document uploaded successfully. Analysis in progress."
     }
 
-@router.get("/", response_model=list[DocumentSchema])
+@router.get("", response_model=list[DocumentSchema])
 async def get_documents(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)

@@ -10,7 +10,7 @@ from ..auth import get_current_user
 
 router = APIRouter()
 
-@router.get("/")
+@router.get("")
 async def get_tasks(
     status: Optional[str] = Query(None),
     assigned_to: Optional[int] = Query(None),
@@ -49,7 +49,7 @@ async def get_tasks(
         for task, issue_title, severity, document_title in results
     ]
 
-@router.post("/", response_model=TaskSchema)
+@router.post("", response_model=TaskSchema)
 async def create_task(
     task_data: TaskCreate,
     current_user: User = Depends(get_current_user),
