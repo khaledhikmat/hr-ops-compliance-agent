@@ -4,6 +4,9 @@ from sqlalchemy.orm import sessionmaker, relationship
 from datetime import datetime
 import os
 
+# Ensure data directory exists before creating database
+os.makedirs("data", exist_ok=True)
+
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./data/compliance.db")
 
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
